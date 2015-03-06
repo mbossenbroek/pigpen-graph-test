@@ -2,8 +2,7 @@
   :min-lein-version "2.0.0"
   :main nil ; Ensures that MANIFEST.MF *does not* declare Main-Class. This is important.
             ; See http://goo.gl/f0Edmr for details.
-  :dependencies [[prismatic/plumbing "0.3.3"]
-
+  :dependencies [
                  ;; Doesn't work
                  [com.netflix.pigpen/pigpen "0.2.13"]
 
