@@ -1,2 +1,6 @@
 target
 .lein-failures
+/bin/
+.classpath
+.nrepl-port
+.project

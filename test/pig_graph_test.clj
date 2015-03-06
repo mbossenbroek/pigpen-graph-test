@@ -1,12 +1,10 @@
 (ns pig-graph-test
   (:require [clojure.test :refer [is deftest]]
-            [pigpen.core :as pig]
+            [taoensso.nippy :as nippy]
             [plumbing.graph :as graph]
             [plumbing.core :refer [fnk]]))
 
-(def transformation (graph/compile { :x (fnk [y] (+ y 1))}))
+(def transformation (graph/compile {:x (fnk [y] (+ y 1))}))
 
-(deftest test-graph
-  (let [data (pig/return [{:y 1} {:y 2}])]
-    (is (= [{:x 2} {:x 3}] (pig/dump (pig/map transformation data))))))
-
+(deftest test-roundtrip
+  (nippy/thaw (nippy/freeze (transformation {:y 1}))))
